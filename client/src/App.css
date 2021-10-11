@@ -1,0 +1,31 @@
+.App{
+    width: 100vw;
+    height: 100vh;
+}
+.popup{
+ max-width: 45vh;
+}
+.popup form {
+    padding: 0 auto;
+}
+.entryForm{
+    padding: 1rem;
+}
+.entryForm label ,.entryForm input
+{
+margin: 0.5rem 0 ;
+padding: 0.5rem 0 ;
+display: block;
+width: 100%;
+}
+.entryForm input,.entryForm select{
+    width: 90%;
+}
+
+.entryForm button{
+margin: 0 auto;
+}
+ 
+.error{
+    border: 1px solid rgba(255, 51, 0, 0.753);
+}
