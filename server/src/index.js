@@ -9,8 +9,10 @@ const cors = require('cors');
 //ODM for mongoD
 const mongoose = require('mongoose');
 //loading middleware
-const{ notFound , errorHandler} = require('./middleware');
+const{ notFound , errorHandler} = require('./middleware/middleware');
 //importing files
+
+const user = require('./api/auth');
 const log = require('./api/log');
 //loading .env file
 require('dotenv').config();
@@ -51,6 +53,7 @@ app.get('/', (req,res)=>{
   })
 });
 //intializing other routers
+app.use('/user',user)
 app.use('/api/log',log)
 
 //not found middleware
