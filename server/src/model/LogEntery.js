@@ -9,6 +9,10 @@ const string={
 
 
 const logEntrySchema = new Schema({
+    userId:{
+        type:String,
+        required:true
+    },
     title:{
         type:String,
         required:true,
