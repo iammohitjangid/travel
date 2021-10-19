@@ -10,7 +10,8 @@ export async function createLogEntry(entry,lat,long){
     const response = await fetch(`${API_URL}/api/log`,{
         method:"POST",
         headers:{
-            "content-type":"application/json"
+            "content-type":"application/json",
+
         },
         body:JSON.stringify({...entry,
         latitude:lat,

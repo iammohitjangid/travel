@@ -7,6 +7,7 @@ module.exports.signup=(req,res,next)=>{
     //destructuring body
     const{name,email,password }=req.body;
     if(!name||!email||!password){
+        console.log(name,password,email);
          res.status(400).json({
             msg:'Invalid Feilds'
         });
@@ -38,6 +39,7 @@ module.exports.signup=(req,res,next)=>{
 
 module.exports.login=(req,res)=>{
     const {email,password} = req.body;
+    console.log(email,password);
     if(!email || !password){
         res.status(400).json({msg:'please enter all fields'});
     }

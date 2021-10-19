@@ -29,3 +29,58 @@ margin: 0 auto;
 .error{
     border: 1px solid rgba(255, 51, 0, 0.753);
 }
+
+.home{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+.overlay{
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    padding-top: 100px;
+    color: white;
+    overflow: hidden;
+    background: #C04848;  /* fallback for old browsers */
+    background: linear-gradient(rgba(231, 224, 224, 0.253), rgba(0, 0, 0, 0.938));  /* Chrome 10-25, Safari 5.1-6 */
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.home_video{
+    z-index: -1;
+    position: absolute;
+    width: auto;
+    height: auto;
+    min-width: 100%;
+    min-height: 100%;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-30%);
+
+}
+.home_container{
+ 
+   height: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+}
+
+.home_button_login {
+
+    text-decoration: none;
+    border: 1px solid white;
+    color: white;
+    border-radius: 4%;
+    
+}
+.home_button_login:hover{
+    border: none;
+    transition: .25s ease-out;
+    background-color: white;
+    color: black;
+
+}
