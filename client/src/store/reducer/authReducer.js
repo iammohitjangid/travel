@@ -16,7 +16,7 @@ const intialState={
     user:null
 };
 
-export default function(state=intialState,action){
+export default  function (state=intialState,action){
     switch (action.type) {
         case USER_LOADING:
             return{
@@ -24,6 +24,8 @@ export default function(state=intialState,action){
                 isLoading:true
             }
           case USER_LOADED:
+            localStorage.setItem('tokken',action.payload.token);
+
               return{
                   ...state,
                   isLoading:false,
@@ -32,13 +34,13 @@ export default function(state=intialState,action){
               }  
            case LOGIN_SUCCESS:
            case REGISTER_SUCCESS:
-               console.log(action.payload);
                localStorage.setItem('tokken',action.payload.token);
                return{
                    ...state,
                    ...action.payload,
                    isAuthenticated:true,
-                   isLoading:false
+                   isLoading:false,
+                   user:action.payload
                }   
                case AUTH_ERROR:
                case LOGIN_FAIL:

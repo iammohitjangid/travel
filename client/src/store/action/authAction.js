@@ -30,9 +30,6 @@ export const loadUser=()=>(dispatch,getState)=>{
 export const register=(newUser)=>(dispatch,getState)=>{
 
     const config=tokkenConfig(getState);
-
-   /*  const body=JSON.stringify(newUser);
-    console.log(body) */
     axios.post('http://localhost:1337/user/register',newUser,config).then(res=>dispatch({
         type:REGISTER_SUCCESS,
         payload:res.data
@@ -43,12 +40,12 @@ export const register=(newUser)=>(dispatch,getState)=>{
         })
     })
 }
-export const login = ({email, password}) => (dispatch , getState) => {
+export const login = (body) => (dispatch , getState) => {
     // headers
     const config = tokkenConfig(getState);
 
     //request body
-    const body = JSON.stringify({email, password});
+   
 
     axios.post('http://localhost:1337/user/login',body,config)
         .then(res => dispatch({

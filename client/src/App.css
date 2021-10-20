@@ -84,3 +84,6 @@ margin: 0 auto;
     color: black;
 
 }
+.mapboxgl-popup-content {
+    background-color: rgba(117, 40, 189, 0.753);
+}

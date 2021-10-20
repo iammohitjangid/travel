@@ -1,6 +1,6 @@
 import React from 'react';
 import {Popup } from "react-map-gl";
-import '../App.css';
+
 export default function Pop({children,lat,long,clicked}) {
     return (
         <>
@@ -13,9 +13,7 @@ export default function Pop({children,lat,long,clicked}) {
           closeOnClick={false}
           onClose={clicked}
           anchor="top" >
-          <div 
-          className="popup"
-          >
+          <div >
               {children}           
             </div>
         </Popup>

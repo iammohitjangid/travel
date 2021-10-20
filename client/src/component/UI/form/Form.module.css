@@ -1,0 +1,24 @@
+.login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(rgba(167, 167, 182, 0.5), rgb(0, 0, 0))
+    ,url("https://images.pexels.com/photos/2397414/pexels-photo-2397414.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+    background-position: center;
+    height: 100%;
+    
+}
+.form_box{
+    background-color: #ffffffe3;
+    border-radius: 20px;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);;
+}
+.form_box > p ,.form_box>div ,.form_box>button{
+    padding:0.5em 0em .5em 0;
+}
+.form_box>button{
+    margin-top: .5em;
+}
+

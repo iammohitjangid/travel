@@ -16,7 +16,7 @@ const Navigation=(props)=>{
           </li > 
            
           <li className="nav-item pe-2 ">
-          <NavLink to="/signup" className="nav-link  px-3">SignUp</NavLink>
+          <NavLink to="/register" className="nav-link  px-3">Register</NavLink>
           </li > 
        </ul>
        </div>

@@ -13,7 +13,7 @@ const intialState={
     loadingLocation:null,
 };
 
-export default function(state=intialState,action){
+export default function (state=intialState,action){
     switch(action.type){
         case LOADING_LOCATIONS:
             return{
@@ -40,7 +40,7 @@ export default function(state=intialState,action){
                 }
             case CREATE_USER_LOCATION_FAILED:
             case FETCH_ALL_LOCATION_FAILED:
-            case FETCH_ALL_LOCATION_FAILED:
+           
             return{
                 ...state,
                 data:null,
