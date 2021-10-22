@@ -1,8 +1,9 @@
 import React,{useState,useEffect}from 'react';
 import ReactMapGl from 'react-map-gl';
 
-import {useDispatch} from 'react-redux'
+import {useDispatch,useSelector} from 'react-redux'
 import {fetchAllLocation} from '../../../store/action/locAction';
+import Loader from '../loader/Loader';
 
 const MapUI = ({children})=>{
 
@@ -13,14 +14,16 @@ const MapUI = ({children})=>{
       });
      
      const dispatchLocations = useDispatch();
-
+     const loading = useSelector(state=>state['loc']['loadingLocation']);
+      
 
       useEffect(()=>{
           dispatchLocations(fetchAllLocation());
       },[dispatchLocations]); 
 
     return(
-        <ReactMapGl
+        <>
+       { !loading ?<ReactMapGl
         {...viewport}
          width="100%"
          height="100%"
@@ -30,6 +33,9 @@ const MapUI = ({children})=>{
         >
             {children}
         </ReactMapGl>
+        :<Loader />
+       }
+        </>
     );
 };
 

@@ -53,7 +53,7 @@ module.exports.login=(req,res)=>{
             if(!isMatch){
                 res.status(400).json({msg:'Invalid password'});
             }
-            jwt.sign({id:user._id},process.env.JWT_TOKKEN,{expiresIn:3600},(err,token)=>{
+            jwt.sign({id:user._id},process.env.JWT_TOKKEN,{expiresIn:"1h"},(err,token)=>{
                 if(err) throw err;
                 res.json({
                     token,

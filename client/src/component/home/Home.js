@@ -1,6 +1,9 @@
 import React from 'react';
+
 import { NavLink } from 'react-router-dom';
 import BGVedio from '../../assets/travel2.mp4'
+
+
 
 
 const Home=(props)=>{
@@ -24,6 +27,7 @@ const Home=(props)=>{
             <div className="col-12 mt-2">
                 <NavLink to="login" className="home_button_login  px-5 py-2 h5" > Login</NavLink>
             </div>
+           
         </div>
         </div>
         </div>

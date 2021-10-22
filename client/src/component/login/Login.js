@@ -1,12 +1,26 @@
 import React from 'react';
 import Form from '../UI/form/Form';
 import FormInput  from '../UI/form/formInput/FormInput';
+
+import {login} from '../../store/action/authAction';
+import {useDispatch} from 'react-redux';
+
 const Login=(props)=>{
+
+        const loginUser = useDispatch();
+        const initialValue = {
+          email:'',
+          password:''
+        };
+        const submit=(form)=>{
+          loginUser(login(form));
+        }
     return(
-      
                 <Form 
                 title="Please Log In"
                 buttonTitle="LOG IN"
+                initialValue={initialValue}
+                submitData={submit}
                 > 
                 <FormInput 
                   type="email"

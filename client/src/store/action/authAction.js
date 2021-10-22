@@ -19,7 +19,8 @@ export const loadUser=()=>(dispatch,getState)=>{
         dispatch({
             type:USER_LOADED,
             payload:res.data
-        })
+        });
+        dispatch(clearErrors());
     }).catch(err=>{ 
         dispatch(returnErrors(err.response.data,err.response.status,AUTH_ERROR));
         dispatch({
@@ -69,13 +70,13 @@ export const logout = ()=>dispatch => {
 
 
 export const tokkenConfig = getState=>{
-    const tokken = getState().auth.tokken;
-    const config = {
-        header:{
+    const tokken = getState().auth['tokken'];
+    let config = {
+        headers:{
         "Content-Type":"application/json"}
     };
     if(tokken){
-        config.header['x-auth-tokken'] = tokken;
+        config.headers['x-auth-tokken'] = tokken;
     }
     return config;
 }

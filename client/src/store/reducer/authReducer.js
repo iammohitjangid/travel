@@ -11,9 +11,9 @@ import {
 
 const intialState={
     tokken:localStorage.getItem('tokken'),
-    isAuthenticated:null,
+    isAuthenticated:false,
     isLoading:false,
-    user:null
+    user:false
 };
 
 export default  function (state=intialState,action){
@@ -24,24 +24,25 @@ export default  function (state=intialState,action){
                 isLoading:true
             }
           case USER_LOADED:
-            localStorage.setItem('tokken',action.payload.token);
-
+              const storeTokken = localStorage.getItem('tokken');
               return{
                   ...state,
+                  tokken:storeTokken,
                   isLoading:false,
                   isAuthenticated:true,
-                  user:action.payload
+                  user:{...action.payload}
               }  
            case LOGIN_SUCCESS:
            case REGISTER_SUCCESS:
-               localStorage.setItem('tokken',action.payload.token);
+               localStorage.setItem('tokken',action.payload['token']);
                return{
-                   ...state,
-                   ...action.payload,
+                   ...state,    
+                   tokken:action.payload['user']['token'] ,
                    isAuthenticated:true,
                    isLoading:false,
-                   user:action.payload
-               }   
+                   user:action.payload['user']
+                 
+                }   
                case AUTH_ERROR:
                case LOGIN_FAIL:
                case LOGOUT_SUCCESS:

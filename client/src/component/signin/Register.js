@@ -1,12 +1,27 @@
 import React from 'react';
 import Form from '../UI/form/Form';
 import FormInput  from '../UI/form/formInput/FormInput';
+
+import {useDispatch} from 'react-redux';
+import {register} from '../../store/action/authAction';
+
 const Register=(props)=>{
+  const registerDispatch = useDispatch();
+  const initialValue = {
+    email:'',
+    name:'',
+    password:''
+  };
+  const submit=(form)=>{
+    registerDispatch(register(form));
+  }
     return(
       
                 <Form 
                 title="Register"
                 buttonTitle="REGISTER"
+                initialValue={initialValue}
+                submitData={submit}
                 > 
                 <FormInput 
                   type="email"
@@ -20,7 +35,7 @@ const Register=(props)=>{
                   type="text"
                   label="Name" 
                   inputClass="form-control"
-                  name="Name"
+                  name="name"
                   id="floatingInput"
                   placeholder="Name"
                   />

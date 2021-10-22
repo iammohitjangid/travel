@@ -28,8 +28,10 @@ module.exports.addLocation=async(req,res,next)=>{
 
 module.exports.getUserLocations=async(req,res,next)=>{
     try {
-        const userId = req.user.id;
+        const userId = User;
+        console.log("userId",userId)
         const location = await LogEntry.find({userId});
+        console.log(location);
         res.json(location);
     } catch (error) {
         if(error.name==='ValidationError'){

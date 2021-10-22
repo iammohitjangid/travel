@@ -52,7 +52,7 @@ const Map=(props)=>{
                          
 
                       <div className="progress " style={{height:'.5rem'}}>
-                      <div className={`progress-bar w-${(data.rating*100)/5} .bg-success justify-content-end`} role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"><p  className="text-white "> </p></div>
+                      <div className={`progress-bar w-${(data.rating*100)/5} justify-content-end`} role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"><p  className="text-white "> </p></div>
                       </div>
                       </div>
                 </MapPopUp>

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {clearErrors} from '../action/errorAction';
 import { 
     CREATE_USER_LOCATION,
     FETCH_ALL_LOCATION,
@@ -26,43 +27,62 @@ export const fetchAllLocation=()=>(dispatch,getState)=>
 }
 
 
-export const fetchUserLocation=(userTokken,locationData)=>(dispatch,getState)=>{
+/* export const fetchUserLocation=(user)=>(dispatch,getState)=>{
     dispatch({type:LOADING_LOCATIONS});
-    const body = JSON.stringify(locationData);
-    axios.get('http://localhost:1337/api/log/userlocation',tokkenConfig(userTokken),body).then(res=>{
-        dispatch({
+//errr
+    axios.get('http://localhost:1337/api/log/userlocation',user,tokkenConfig(getState)).then(res=>{     
+    dispatch({
          type:FETCH_USER_LOCATION,
-         payload:res.data
-        });
-    }).catch(err=>{
-        dispatch(returnErrors(err.response.data.message,err.response.status,CREATE_USER_LOCATION_FAILED));
-        dispatch({
-            type:CREATE_USER_LOCATION_FAILED
-        });
-    })
-}
-
-export const createUserLocation=(userTokken)=>dispatch=>{
-    dispatch({type:LOADING_LOCATIONS});
-    axios.post('http://localhost:1337/api/log/',tokkenConfig(userTokken)).then(res=>{
-        dispatch({
-         type:CREATE_USER_LOCATION,
          payload:res.data
         });
     }).catch(err=>{
         dispatch(returnErrors(err.response.data.message,err.response.status,FETCH_USER_LOCATION_FAILED));
         dispatch({
             type:FETCH_USER_LOCATION_FAILED
+        });
+    })
+} */
+
+export const fetchUserLocation=()=>(dispatch,getState)=>{
+    dispatch({type:LOADING_LOCATIONS});
+    axios.get('http://localhost:1337/api/log/userlocation',tokkenConfig(getState)).then(res=>{
+        dispatch({
+            type:FETCH_USER_LOCATION,
+            payload:res.data
+        });
+        dispatch(clearErrors());
+    }).catch(err=>{ 
+        dispatch(returnErrors(err.response.data,err.response.status,FETCH_USER_LOCATION_FAILED));
+        dispatch({
+            type:FETCH_USER_LOCATION_FAILED
         })
     })
 }
-export const tokkenConfig = tokken=>{
-    const config = {
-        header:{
-        "Content-type":"application/json"}
+
+export const createUserLocation=(locationData)=>(dispatch,getState)=>{
+    dispatch({type:LOADING_LOCATIONS});
+       // const body = JSON.stringify(locationData);
+       
+    axios.post('http://localhost:1337/api/log/',locationData,tokkenConfig(getState)).then(res=>{
+        dispatch({
+         type:CREATE_USER_LOCATION,
+         payload:res.data
+        });
+    }).catch(err=>{
+        dispatch(returnErrors(err.response.data.message,err.response.status,CREATE_USER_LOCATION_FAILED));
+        dispatch({
+            type:CREATE_USER_LOCATION_FAILED
+        })
+    })
+}
+export const tokkenConfig = getState=>{
+    const tokken = getState().auth['tokken'];
+    let config = {
+        headers:{
+        "Content-Type":"application/json"}
     };
     if(tokken){
-        config.header['x-auth-tokken'] = tokken;
+        config.headers['x-auth-tokken'] = tokken;
     }
     return config;
 }

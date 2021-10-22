@@ -7,10 +7,11 @@ import {
     FETCH_ALL_LOCATION_FAILED,
     
 } from '../actionTypes';
-// tokken ? not null:null
+
 const intialState={
     data:null,
     loadingLocation:null,
+    userLocations:null
 };
 
 export default function (state=intialState,action){
@@ -29,7 +30,7 @@ export default function (state=intialState,action){
             case FETCH_USER_LOCATION:
                 return{
                     ...state,
-                    data:action.payload.data,
+                    userLocations:action.payload,
                     loadingLocation:false
                 }
             case FETCH_ALL_LOCATION:
@@ -43,7 +44,6 @@ export default function (state=intialState,action){
            
             return{
                 ...state,
-                data:null,
                 loadingLocation:false
             }
             default:

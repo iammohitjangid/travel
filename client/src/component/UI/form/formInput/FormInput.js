@@ -1,8 +1,9 @@
 
-import {useState} from 'react';
+import {useContext} from 'react';
+import { formContext} from '../Form';
 
 function FormInput(props) {
-  const[input,setInput] = useState({});
+  const useFormContext = useContext(formContext);
   const {
     label, 
     type = 'text', 
@@ -26,11 +27,9 @@ function FormInput(props) {
         id={id}
         placeholder={placeholder}
         {...len}
-        onChange={e=>{setInput({
-          [e.target.name]:e.target.value,
-
-        })}}
-        value={input[id]}
+        onChange={useFormContext.handleFormChange}
+        value={useFormContext.form[name]}
+        required
       />
        <label htmlFor={id}>{label}</label>
     </div>
