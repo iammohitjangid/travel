@@ -3,7 +3,7 @@ import Form from '../UI/form/Form';
 import FormInput  from '../UI/form/formInput/FormInput';
 
 import {login} from '../../store/action/authAction';
-import {useDispatch} from 'react-redux';
+import {useDispatch ,useSelector} from 'react-redux';
 
 const Login=(props)=>{
 

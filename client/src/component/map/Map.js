@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import {useSelector} from 'react-redux';
-import { Marker, Popup} from 'react-map-gl';
+import { Marker} from 'react-map-gl';
 import MapUI from '../UI/mapUI/MapUI';
 import MarkerIcon from '../../component/UI/icons/MarkerIcon';
 import MapPopUp from '../UI/mapUI/MapPopup';

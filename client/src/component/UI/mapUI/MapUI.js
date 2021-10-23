@@ -5,7 +5,7 @@ import {useDispatch,useSelector} from 'react-redux'
 import {fetchAllLocation} from '../../../store/action/locAction';
 import Loader from '../loader/Loader';
 
-const MapUI = ({children})=>{
+const MapUI = ({children ,onDblClick})=>{
 
     const [viewport, setViewport] = useState({
         latitude: 22.719568,
@@ -23,7 +23,9 @@ const MapUI = ({children})=>{
 
     return(
         <>
-       { !loading ?<ReactMapGl
+       { !loading ?
+       <ReactMapGl
+       onDblClick={onDblClick}
         {...viewport}
          width="100%"
          height="100%"
