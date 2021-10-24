@@ -7,7 +7,7 @@ export const formContext = React.createContext({
 });
 
 
-const Form =({children,title,buttonTitle,initialValue={},submitData})=>{
+const Form =({children,title,titleClass=" ",buttonTitle,buttonClass,initialValue={},submitData})=>{
   const[form,setForm]=useState(initialValue);
 
   const formSubmit=(e)=>{
@@ -32,9 +32,9 @@ const Form =({children,title,buttonTitle,initialValue={},submitData})=>{
         className={`${classes.form_box} px-md-3 py-md-4 px-sm-2 py-sm-3 px-xs-1 py-xs-1`}
         onSubmit={formSubmit}
         >
-        <p className="h3 mb-3 fw-normal">{title}</p>
+        <p className={` fw-normal ${titleClass}`}>{title}</p>
         {children}
-        <button className="w-100 btn btn-lg btn-primary"
+        <button className={buttonClass}
          type="submit">{buttonTitle}</button>
         </form>
         </div>

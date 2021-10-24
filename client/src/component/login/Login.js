@@ -19,6 +19,8 @@ const Login=(props)=>{
                 <Form 
                 title="Please Log In"
                 buttonTitle="LOG IN"
+                buttonClass="w-100 btn btn-lg btn-primary"
+                titleClass="mb-3 h3"
                 initialValue={initialValue}
                 submitData={submit}
                 > 

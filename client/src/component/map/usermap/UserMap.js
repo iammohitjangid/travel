@@ -6,6 +6,7 @@ import  LocationForm from '../usermap/locationform/LocationForm';
 import MapPopUp from '../../UI/mapUI/MapPopup';
 import { useDispatch , useSelector} from 'react-redux';
 import {fetchUserLocation} from '../../../store/action/locAction';
+import {createUserLocation} from './../../../store/action/locAction'; 
 
 const UserMap=()=>{
     const [addEntryLocation,setAddEntryLocation]= useState(null);
@@ -14,6 +15,12 @@ const UserMap=()=>{
     useEffect(()=>{
         userLocationDispatch(fetchUserLocation());
     },[]);
+
+    const onSubmit=(form)=>{
+        form['latitude'] = addEntryLocation.latitude;
+        form['longitude'] = addEntryLocation.longitude;
+        userLocationDispatch(createUserLocation(form));
+    }
 
     const dbClickedListner=(e)=>{
         const [longitude,latitude]=e.lngLat ;
@@ -39,23 +46,15 @@ const UserMap=()=>{
               />
             </Marker >
 
-            {/* <Popup 
-              lat={addEntryLocation.latitude}
-              long={addEntryLocation.longitude}
-              clicked={()=>setAddEntryLocation(null)
-              }
-              >
-                <Form 
-                onClose={()=>setAddEntryLocation(null)}
-                onRefresh={()=>loadLocations()}
-                long={addEntryLocation.longitude} 
-                lat={addEntryLocation.latitude}  />
-              </Popup> */}
+           
               <MapPopUp
                latitude={addEntryLocation.latitude}
                longitude={addEntryLocation.longitude}
               >
-              <LocationForm />
+              <LocationForm 
+               onSubmit={onSubmit}
+
+              />
               </MapPopUp>
         </>):null}
 

@@ -20,8 +20,10 @@ const Register=(props)=>{
                 <Form 
                 title="Register"
                 buttonTitle="REGISTER"
+                buttonClass="w-100 btn btn-lg btn-primary"
                 initialValue={initialValue}
                 submitData={submit}
+                titleClass="mb-3 h3"
                 > 
                 <FormInput 
                   type="email"

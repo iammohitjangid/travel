@@ -20,27 +20,13 @@ export const fetchAllLocation = () => (dispatch, getState) => {
         });
 
     }).catch(err => {
-        dispatch(returnErrors(err.response.data.message, err.response.status, FETCH_ALL_LOCATION_FAILED));
+        dispatch(returnErrors(err.response.data, err.response.status, FETCH_ALL_LOCATION_FAILED));
         dispatch({ type: FETCH_ALL_LOCATION_FAILED })
     });
 }
 
 
-/* export const fetchUserLocation=(user)=>(dispatch,getState)=>{
-    dispatch({type:LOADING_LOCATIONS});
-//errr
-    axios.get('http://localhost:1337/api/log/userlocation',user,tokkenConfig(getState)).then(res=>{     
-    dispatch({
-         type:FETCH_USER_LOCATION,
-         payload:res.data
-        });
-    }).catch(err=>{
-        dispatch(returnErrors(err.response.data.message,err.response.status,FETCH_USER_LOCATION_FAILED));
-        dispatch({
-            type:FETCH_USER_LOCATION_FAILED
-        });
-    })
-} */
+
 
 export const fetchUserLocation = () => (dispatch, getState) => {
     dispatch({ type: LOADING_LOCATIONS });
@@ -52,7 +38,7 @@ export const fetchUserLocation = () => (dispatch, getState) => {
         dispatch(clearErrors());
     }).catch(err => {
         console.log(err)
-        dispatch(returnErrors(err.response.data.message, err.response.status, FETCH_USER_LOCATION_FAILED));
+        dispatch(returnErrors(err.response.data, err.response.status, FETCH_USER_LOCATION_FAILED));
         dispatch({
             type: FETCH_USER_LOCATION_FAILED
         })
@@ -69,7 +55,7 @@ export const createUserLocation = (locationData) => (dispatch, getState) => {
             payload: res.data
         });
     }).catch(err => {
-        dispatch(returnErrors(err.response.data.message, err.response.status, CREATE_USER_LOCATION_FAILED));
+        dispatch(returnErrors(err.response.data, err.response.status, CREATE_USER_LOCATION_FAILED));
         dispatch({
             type: CREATE_USER_LOCATION_FAILED
         })

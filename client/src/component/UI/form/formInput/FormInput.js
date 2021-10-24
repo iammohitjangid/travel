@@ -6,11 +6,13 @@ function FormInput(props) {
   const useFormContext = useContext(formContext);
   const {
     label, 
+    labelClass,
     type = 'text', 
     name,
     id,
     placeholder,
-    inputClass="form-control"
+    inputClass="form-control",
+    input=""
   } = props;
 
   let  len ={};
@@ -22,7 +24,7 @@ function FormInput(props) {
      
       <input
         type={type}
-        className={inputClass}
+        className={`${inputClass} ${input}` }
         name={name}
         id={id}
         placeholder={placeholder}
@@ -31,7 +33,7 @@ function FormInput(props) {
         value={useFormContext.form[name]}
         required
       />
-       <label htmlFor={id}>{label}</label>
+       <label htmlFor={id} className={labelClass}>{label}</label>
     </div>
   )
 }

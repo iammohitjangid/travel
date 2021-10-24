@@ -1,10 +1,84 @@
 import React  from 'react';
-import {Form} from 'react-bootstrap';
-const LocationForm =()=>{
+import Form from '../../../UI/form/Form';
+import FormInput from '../../../UI/form/formInput/FormInput';
+
+const LocationForm =({onSubmit})=>{
+    const initialValue ={
+      'title':' ',
+      'description':'',
+      'comments':'',
+      'visitDate':'',
+      'image' :'',
+      'rating':5
+    }
    
+  
     return(
-      <Form.Control size="sm" type="text" placeholder="Small text"/>
-    );
+      <Form 
+        title="Register"
+        titleClass = "text-dark p-0 m-0 mb-0"
+        buttonTitle="Register"
+        buttonClass="btn btn-primary btn-sm "
+        initialValue={initialValue}
+        submitData={onSubmit}
+      >
+        <FormInput 
+          label="Title"
+          labelClass="text-dark"
+          name="title"
+          id="title"
+          placeholder="Title"
+          input="p-0 m-0"
+        />
+        <FormInput 
+          label="Description"
+          labelClass="text-dark"
+          name="description"
+          id="description"
+          placeholder="Description"
+          input="p-0 m-0"
+        />
+        <FormInput 
+          label="Comments"
+          labelClass="text-dark"
+          name="comments"
+          id="comments"
+          placeholder="Comments"
+          input="p-0 m-0"
+        />
+       
+        
+        <FormInput 
+          labelClass="text-dark"
+          type="date"
+          name="visitDate"
+          id="visitDate"
+          input="p-0 m-0"
+        />
+        <FormInput 
+          label="Image"
+          labelClass="text-dark"
+          name="image"
+          id="image"
+          placeholder="Image"
+         
+          input="p-0 m-0"
+        />
+        <FormInput 
+         label="Rating"
+          labelClass="text-dark"
+          type='number'
+          name="rating"
+          id="rating"
+          placeholder="rating"
+          input="p-0 m-0"
+        />
+
+
+      </Form>
+
+
+      );
 };
 
 export default LocationForm;
