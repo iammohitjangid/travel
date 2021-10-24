@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import {Popup} from 'react-map-gl';
-const MapPopUp=({children,latitude,longitude,clicked})=>{
+const MapPopUp=({children,latitude,longitude})=>{
+    
     return(
         <React.Fragment>
         <Popup
@@ -15,7 +16,7 @@ const MapPopUp=({children,latitude,longitude,clicked})=>{
             <div className="row">
             <div className="col-sm-12 col-md-12  ">
             <div className="card  text-center text-white bg-dark " 
-               style={{maxWidth:'12em'}} 
+               style={{maxWidth:'20em'}} 
             >
                 {children}
             </div>
@@ -23,6 +24,7 @@ const MapPopUp=({children,latitude,longitude,clicked})=>{
             </div>
           </Popup>
           </React.Fragment>
+        
     );
 };
 

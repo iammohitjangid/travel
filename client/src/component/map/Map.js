@@ -1,27 +1,33 @@
 import React,{useState,useEffect} from 'react';
-import {useSelector} from 'react-redux';
+import {useSelector,useDispatch} from 'react-redux';
 import { Marker} from 'react-map-gl';
 import MapUI from '../UI/mapUI/MapUI';
 import MarkerIcon from '../../component/UI/icons/MarkerIcon';
 import MapPopUp from '../UI/mapUI/MapPopup';
+import {fetchAllLocation} from '../../store/action/locAction';
 
 
 const Map=(props)=>{
     const [showPopup, setPopUp] = useState({});
     const locations = useSelector(state=>state['loc']);
     const[enteries,setEnteries] = useState([{...locations['data']}]);
+    const dispatchLocations = useDispatch();
 
  
     useEffect(()=>{
-       setEnteries(locations['data']) 
-    },[locations])
+       setEnteries(locations['data']) ;
+    },[locations]);
+
+    useEffect(()=>{
+      dispatchLocations(fetchAllLocation());
+    },[dispatchLocations]); 
     
     return(
       
         <MapUI>           
            {enteries && enteries.map(data=>(
               <>
-              {console.log(data)}
+             
              <Marker
                 key={data['_id']}
                 latitude={data['latitude']}
@@ -60,6 +66,7 @@ const Map=(props)=>{
 
                </>                     
            ))}   
+          
            
         </MapUI>
     )

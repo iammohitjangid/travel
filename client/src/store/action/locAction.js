@@ -30,14 +30,16 @@ export const fetchAllLocation = () => (dispatch, getState) => {
 
 export const fetchUserLocation = () => (dispatch, getState) => {
     dispatch({ type: LOADING_LOCATIONS });
-    axios.get('http://localhost:1337/api/log/userlocation', tokkenConfig(getState)).then(res => {
+   /*  const tokken = localStorage.getItem('tokken');
+    console.log('Tokken Fetch location',tokken) */
+    axios.get('http://localhost:1337/api/log/userlocation',tokkenConfig(getState)).then(res => {
         dispatch({
             type: FETCH_USER_LOCATION,
             payload: res.data
         });
         dispatch(clearErrors());
     }).catch(err => {
-        console.log(err)
+        console.log(err);
         dispatch(returnErrors(err.response.data, err.response.status, FETCH_USER_LOCATION_FAILED));
         dispatch({
             type: FETCH_USER_LOCATION_FAILED
@@ -62,7 +64,7 @@ export const createUserLocation = (locationData) => (dispatch, getState) => {
     })
 }
 export const tokkenConfig = getState => {
-    const tokken = getState().auth['tokken'];
+    const tokken = localStorage.getItem('tokken');
     let config = {
         headers: {
             "Content-Type": "application/json"

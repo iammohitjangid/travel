@@ -5,25 +5,28 @@ import {useDispatch,useSelector} from 'react-redux'
 import {fetchAllLocation} from '../../../store/action/locAction';
 import Loader from '../loader/Loader';
 
-const MapUI = ({children ,onDblClick})=>{
+const MapUI = ({children ,onDblClick,lat = 22.719568,lon = 75.857727})=>{
 
     const [viewport, setViewport] = useState({
-        latitude: 22.719568,
-        longitude: 75.857727,
+        latitude: lat,
+        longitude: lon,
         zoom: 5
       });
      
-     const dispatchLocations = useDispatch();
      const loading = useSelector(state=>state['loc']['loadingLocation']);
       
-
+ 
       useEffect(()=>{
-          dispatchLocations(fetchAllLocation());
-      },[dispatchLocations]); 
-
+          setViewport({
+            latitude: lat,
+            longitude: lon,
+            zoom: 5
+          })
+      },[lat,lon]); 
+ 
     return(
         <>
-       { !loading ?
+      
        <ReactMapGl
        onDblClick={onDblClick}
         {...viewport}
@@ -35,8 +38,7 @@ const MapUI = ({children ,onDblClick})=>{
         >
             {children}
         </ReactMapGl>
-        :<Loader />
-       }
+        
         </>
     );
 };

@@ -28,9 +28,9 @@ module.exports.addLocation=async(req,res,next)=>{
 
 module.exports.getUserLocations=async(req,res,next)=>{
     try {
-        const userId = User;
-        console.log("userId",userId)
-        const location = await LogEntry.find({userId});
+        const userId = req.user['id'];
+        console.log(userId);
+        const location = await LogEntry.find({userId}).exec();
         console.log(location);
         res.json(location);
     } catch (error) {

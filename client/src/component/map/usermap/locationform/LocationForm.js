@@ -15,10 +15,10 @@ const LocationForm =({onSubmit})=>{
   
     return(
       <Form 
-        title="Register"
+        title="Add Location"
         titleClass = "text-dark p-0 m-0 mb-0"
-        buttonTitle="Register"
-        buttonClass="btn btn-primary btn-sm "
+        buttonTitle="Add"
+        buttonClass="btn btn-primary btn-lg "
         initialValue={initialValue}
         submitData={onSubmit}
       >
@@ -73,6 +73,10 @@ const LocationForm =({onSubmit})=>{
           placeholder="rating"
           input="p-0 m-0"
         />
+        <button className="btn btn-danger btn-lg">
+        Close
+      
+        </button>
 
 
       </Form>

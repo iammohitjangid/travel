@@ -53,7 +53,8 @@ export default  function (state=intialState,action){
                        tokken:null,
                        user:null,
                        isAuthenticated:false,
-                       isLoading:false
+                       isLoading:false,
+                       user:null
                    } 
         default:
             return state;

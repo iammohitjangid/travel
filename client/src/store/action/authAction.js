@@ -49,10 +49,14 @@ export const login = (body) => (dispatch , getState) => {
    
 
     axios.post('http://localhost:1337/user/login',body,config)
-        .then(res => dispatch({
+        .then(res => {
+            dispatch({
             type: LOGIN_SUCCESS,
             payload: res.data
-        }))
+        });
+        dispatch(clearErrors());
+    }
+        )
         .catch(err => {
             dispatch(returnErrors(err.response.data, err.response.status, LOGIN_FAIL));
             dispatch({

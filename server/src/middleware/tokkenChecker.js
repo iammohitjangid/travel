@@ -9,6 +9,7 @@ module.exports.tokkenChecker=(req,res,next)=>{
     }
    
         const decode = jwt.verify(tokken,process.env.JWT_TOKKEN);
+        console.log(decode)
         req.user = decode;
         next();
     } catch (error) {

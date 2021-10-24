@@ -44,7 +44,8 @@ export default function (state=intialState,action){
            
             return{
                 ...state,
-                loadingLocation:false
+                loadingLocation:false,
+                userLocations:null
             }
             default:
                 return state
